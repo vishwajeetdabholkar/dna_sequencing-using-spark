@@ -1,1 +1,56 @@
 # dna_sequencing-using-spark
+
+In this exercise, you will be performing analysis on the given dataset in Apache Spark using Scala.
+
+
+Data Set Description:
+DNA sequencing is the process of determining the nucleic acid sequence - the order of nucleotides in DNA.
+
+The dataset dna_sequence.txt has the DNA sequence code of a population.
+ |-- dna_code: double (nullable = true)
+ 
+
+Problem Description:
+This problem is having two parts:
+
+Part 1:
+- Read the dna_sequence.txt using the spark csv reader.
+- Classify the DNA sequence code based on the following conditions:
+
+val>=100 and val<25000    A-DNA
+val>=25000 and val<100000    B-DNA
+val>=100000 and val<250000    Z-DNA
+ 
+
+val is the DNA sequence code.
+
+- Save the sequenced DNA in parquet format with name "dna_class".
+
+Sample Output:
++--------+---------+
+|dna_code|dna_class|
++--------+---------+
+|   177.0|    A-DNA|
+|  1321.0|    A-DNA|
+|  1433.0|    A-DNA|
+|  1477.0|    A-DNA|
++--------+---------+
+ 
+
+Part 2:
+- In part 2 find the total count of DNA in each dna_class.
+- Save the result in parquet format with name dna_count.
+
+Sample Output:
++---------+-----+
+|dna_class|count|
++---------+-----+
+|    A-DNA|   15|
+|    B-DNA|  123|
+|    Z-DNA|  195|
++---------+-----+
+ 
+
+Output Schema:
+ |-- dna_class: string (nullable = true)
+ |-- count: long (nullable = false)
